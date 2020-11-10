@@ -2293,9 +2293,9 @@ is a tuple containing all but the first element of \tcode{r}.
 \pnum
 \begin{note}
 The above definition does not require \tcode{t$_{\mathrm{tail}}$}
-(or \tcode{u$_{\mathrm{tail}}$}) to be constructed. It might not
-even be possible, as \tcode{t} and \tcode{u} are not required to be copy
-constructible. Also, all comparison operator functions are short circuited;
+(or \tcode{u$_{\mathrm{tail}}$}) to be constructed;
+this is impossible if \tcode{t} or \tcode{u} is not copy-constructible.
+Also, all comparison operator functions are short circuited;
 they do not perform element accesses beyond what is required to determine the
 result of the comparison.
 \end{note}
@@ -5406,7 +5406,7 @@ Implementations should avoid the use of dynamically allocated memory for a small
 However, any such small-object optimization shall only be applied to types \tcode{T} for which
 \tcode{is_nothrow_move_constructible_v<T>} is \tcode{true}.
 \begin{example}
-A contained value of type \tcode{int} could be stored in an internal buffer,
+A contained value of type \tcode{int} can be stored in an internal buffer,
 not in separately-allocated memory.
 \end{example}
 
@@ -7616,10 +7616,10 @@ Nothing.
 \begin{note}
 The alignment assumption on an object \tcode{X}
 expressed by a call to \tcode{assume_aligned}
-might result in generation of more efficient code.
+can result in generation of more efficient code.
 It is up to the program to ensure that the assumption actually holds.
 The call does not cause the compiler to verify or enforce this.
-An implementation might only make the assumption
+An implementation can only make the assumption
 for those operations on \tcode{X} that access \tcode{X}
 through the pointer returned by \tcode{assume_aligned}.
 \end{note}
@@ -9071,7 +9071,7 @@ stored pointer, \tcode{old_p}, was not equal to \tcode{nullptr}, calls
 \tcode{get_deleter()(old_p)}.
 \begin{note}
 The order of these operations is significant
-because the call to \tcode{get_deleter()} might destroy \tcode{*this}.
+because the call to \tcode{get_deleter()} can destroy \tcode{*this}.
 \end{note}
 
 \pnum
@@ -10339,8 +10339,8 @@ can affect the return value of \tcode{use_count()}.
 
 \pnum
 \begin{note}
-When multiple threads
-might affect the return value of \tcode{use_count()},
+When it is possible that multiple threads
+affect the return value of \tcode{use_count()},
 the result is approximate.
 In particular, \tcode{use_count() == 1} does not imply that accesses through
 a previously destroyed \tcode{shared_ptr} have in any sense completed.
@@ -15107,7 +15107,8 @@ is \tcode{R(ArgTypes...)}.
 \pnum
 \begin{note}
 The types deduced by the deduction guides for \tcode{function}
-might change in future revisions of \Cpp{}.
+have been identified as candidates
+for being changed in a future revision of \Cpp{}.
 \end{note}
 
 \rSec4[func.wrap.func.con]{Constructors and destructor}
@@ -15879,8 +15880,8 @@ The behavior of a program is undefined if:
   directly or indirectly depends on
   an incompletely-defined object type \tcode{T}, and
 \item
-  that instantiation could yield a different result
-  were \tcode{T} hypothetically completed.
+  that instantiation would yield a different result
+  if performed in a context where \tcode{T} were a complete type.
 \end{itemize}
 
 \rSec2[meta.type.synop]{Header \tcode{<type_traits>} synopsis}
