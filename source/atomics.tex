@@ -796,14 +796,15 @@ which is at least \tcode{alignof(T)}.
 
 \pnum
 \begin{note}
-Hardware could require an object
+Hardware can require an object
 referenced by an \tcode{atomic_ref}
 to have stricter alignment\iref{basic.align}
 than other objects of type \tcode{T}.
 Further, whether operations on an \tcode{atomic_ref}
-are lock-free could depend on the alignment of the referenced object.
-For example, lock-free operations on \tcode{std::complex<double>}
-could be supported only if aligned to \tcode{2*alignof(double)}.
+are lock-free can depend on the alignment of the referenced object.
+For example, it is possible that the hardware supports
+lock-free atomic operations on a \tcode{std::complex<double>} object
+only if the object is aligned to \tcode{2*alignof(double)}.
 \end{note}
 \end{itemdescr}
 
@@ -2004,7 +2005,7 @@ bool zap() {
 \end{note}
 \begin{note}
 For a union with bits that participate in the value representation
-of some members but not others, compare-and-exchange might always fail.
+of some members but not others, it is possible for compare-and-exchange to always fail.
 This is because such padding bits have an indeterminate value when they
 do not participate in the value representation of the active member.
 As a consequence, the following code is not guaranteed to ever succeed:
