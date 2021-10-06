@@ -478,8 +478,10 @@ the integer literal \tcode{0x8000} is signed and positive within a \tcode{\#if}
 expression even though it is unsigned in translation phase
 7\iref{lex.phases}.
 \end{note}
-This includes interpreting \grammarterm{character-literal}s, which may involve
-converting escape sequences into execution character set members.
+This includes interpreting \grammarterm{character-literal}s,
+which may involve interpreting
+\grammarterm{escape-sequence}s and
+\grammarterm{universal-character-name}s\iref{lex.ccon}.
 Whether the numeric value for these \grammarterm{character-literal}s
 matches the value obtained when an identical \grammarterm{character-literal}
 occurs in an expression
@@ -1375,6 +1377,12 @@ Placemarker preprocessing tokens are handled specially: concatenation
 of two placemarkers results in a single placemarker preprocessing token, and
 concatenation of a placemarker with a non-placemarker preprocessing token results
 in the non-placemarker preprocessing token.
+If the result begins with a sequence matching the syntax of \grammarterm{universal-character-name},
+the behavior is undefined.
+\begin{note}
+This determination does not consider the replacement of
+\grammarterm{universal-character-name}s in translation phase 3\iref{lex.phases}.
+\end{note}
 If the result is not a valid preprocessing token,
 the behavior is undefined.
 The resulting token is available for further macro replacement.
