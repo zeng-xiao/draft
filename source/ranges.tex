@@ -3373,7 +3373,7 @@ namespace std::ranges {
     requires @\libconcept{movable}@<R> && (!@\exposid{is-initializer-list}@<R>) // see \ref{range.refinements}
   class owning_view : public view_interface<owning_view<R>> {
   private:
-    R r_ = R();         // \expos
+    R @\exposid{r_}@ = R();         // \expos
   public:
     owning_view() requires default_initializable<R> = default;
     constexpr owning_view(R&& t);
@@ -3381,35 +3381,35 @@ namespace std::ranges {
     owning_view(owning_view&&) = default;
     owning_view& operator=(owning_view&&) = default;
 
-    constexpr R& base() & noexcept { return r_; }
-    constexpr const R& base() const& noexcept { return r_; }
-    constexpr R&& base() && noexcept { return std::move(r_); }
-    constexpr const R&& base() const&& noexcept { return std::move(r_); }
+    constexpr R& base() & noexcept { return @\exposid{r_}@; }
+    constexpr const R& base() const& noexcept { return @\exposid{r_}@; }
+    constexpr R&& base() && noexcept { return std::move(@\exposid{r_}@); }
+    constexpr const R&& base() const&& noexcept { return std::move(@\exposid{r_}@); }
 
-    constexpr iterator_t<R> begin() { return ranges::begin(r_); }
-    constexpr sentinel_t<R> end() { return ranges::end(r_); }
+    constexpr iterator_t<R> begin() { return ranges::begin(@\exposid{r_}@); }
+    constexpr sentinel_t<R> end() { return ranges::end(@\exposid{r_}@); }
 
     constexpr auto begin() const requires @\libconcept{range}@<const R>
-    { return ranges::begin(r_); }
+    { return ranges::begin(@\exposid{r_}@); }
     constexpr auto end() const requires @\libconcept{range}@<const R>
-    { return ranges::end(r_); }
+    { return ranges::end(@\exposid{r_}@); }
 
     constexpr bool empty()
-      requires requires { ranges::empty(r_); }
-    { return ranges::empty(r_); }
+      requires requires { ranges::empty(@\exposid{r_}@); }
+    { return ranges::empty(@\exposid{r_}@); }
     constexpr bool empty() const
-      requires requires { ranges::empty(r_); }
-    { return ranges::empty(r_); }
+      requires requires { ranges::empty(@\exposid{r_}@); }
+    { return ranges::empty(@\exposid{r_}@); }
 
     constexpr auto size() requires @\libconcept{sized_range}@<R>
-    { return ranges::size(r_); }
+    { return ranges::size(@\exposid{r_}@); }
     constexpr auto size() const requires @\libconcept{sized_range}@<const R>
-    { return ranges::size(r_); }
+    { return ranges::size(@\exposid{r_}@); }
 
     constexpr auto data() requires @\libconcept{contiguous_range}@<R>
-    { return ranges::data(r_); }
+    { return ranges::data(@\exposid{r_}@); }
     constexpr auto data() const requires @\libconcept{contiguous_range}@<const R>
-    { return ranges::data(r_); }
+    { return ranges::data(@\exposid{r_}@); }
   };
 }
 \end{codeblock}
@@ -3421,7 +3421,7 @@ constexpr owning_view(R&& t);
 \begin{itemdescr}
 \pnum
 \effects
-Initializes \tcode{r_} with \tcode{std::move(t)}.
+Initializes \exposid{r_} with \tcode{std::move(t)}.
 \end{itemdescr}
 
 \rSec2[range.filter]{Filter view}
