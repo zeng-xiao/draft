@@ -16328,7 +16328,7 @@ Equivalent to:
 return @\placeholder{INVOKE}@<R>(static_cast<F @\placeholder{inv-quals}@>(f), std::forward<ArgTypes>(args)...);
 \end{codeblock}
 where \tcode{f} is the target object of \tcode{*this} and
-\tcode{f} is lvalue of type \tcode{F}.
+\tcode{F} is the type of that target object.
 \end{itemdescr}
 
 \rSec4[func.wrap.move.util]{Utility}
