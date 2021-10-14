@@ -1500,7 +1500,7 @@ iterator and a sentinel into a single object that models the
 \begin{codeblock}
 namespace std::ranges {
   template<class From, class To>
-    concept @\defexposconceptnc{uses-nonqualification-pointer-conversion}@ = // \expos
+    concept @\defexposconceptnc{uses-nonqualification-pointer-conversion}@ =      // \expos
       is_pointer_v<From> && is_pointer_v<To> &&
       !@\libconcept{convertible_to}@<remove_pointer_t<From>(*)[], remove_pointer_t<To>(*)[]>;
 
