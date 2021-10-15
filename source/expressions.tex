@@ -3270,13 +3270,8 @@ of the function selected by overload resolution
 for class template deduction\iref{over.match.class.deduct}
 for the remainder of this subclause.
 Otherwise, if the type is \tcode{auto},
-it is replaced by the type deduced for the variable \tcode{x}
-in the invented declaration\iref{dcl.spec.auto},
-which is never interpreted as a function declaration:
-\begin{codeblock}
-auto x @\placeholder{init}@;
-\end{codeblock}
-, where \placeholder{init} is the initializer.
+it is replaced by the type
+determined by placeholder type deduction\iref{dcl.type.auto.deduct}.
 \begin{example}
 \begin{codeblock}
 struct A {};
