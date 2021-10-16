@@ -68,7 +68,7 @@ Signature changes: \tcode{format}, \tcode{format_to}, \tcode{format_to_n},
 \rationale
 Enable formatting of views that are neither const-iterable nor copyable.
 \effect
-Valid \CppXX{} code that passed bit fields to formatting functions
+Valid \CppXX{} code that passes bit fields to formatting functions
 may become ill-formed. For example:
 \begin{codeblock}
 struct tiny {
@@ -76,7 +76,7 @@ struct tiny {
 };
 
 auto t = tiny();
-std::format("{}", t.bit);       // ill-formed, previously returned "0"
+std::format("{}", t.bit);       // ill-formed, previously returned \tcode{"0"}
 \end{codeblock}
 
 \rSec1[diff.cpp17]{\Cpp{} and ISO \CppXVII{}}
