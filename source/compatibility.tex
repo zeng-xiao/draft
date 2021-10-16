@@ -51,7 +51,8 @@ Enable repurposing a deprecated syntax to support multidimensional indexing.
 Valid \CppXX{} code that uses a comma expression within a
 subscript expression may fail to compile. For example:
 \begin{codeblock}
-arr[1, 2]               // was equivalent to \tcode{arr[(1, 2)]}, now equivalent to \tcode{arr.\keyword{operator}[](1, 2)} or ill-formed
+arr[1, 2]               // was equivalent to \tcode{arr[(1, 2)]},
+                        // now equivalent to \tcode{arr.operator[](1, 2)} or ill-formed
 \end{codeblock}
 
 \rSec2[diff.cpp20.utilities]{\ref{utilities}: general utilities library}
